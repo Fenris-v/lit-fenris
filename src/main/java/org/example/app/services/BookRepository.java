@@ -1,6 +1,7 @@
 package org.example.app.services;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.web.dto.Book;
 import org.springframework.stereotype.Repository;
 
@@ -10,8 +11,7 @@ import java.util.regex.Pattern;
 
 @Repository
 public class BookRepository implements ProjectRepository<Book> {
-
-    private final Logger logger = Logger.getLogger(BookRepository.class);
+    private final Logger logger = LogManager.getRootLogger();
     private final List<Book> repo = new ArrayList<>();
 
     @Override

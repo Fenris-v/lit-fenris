@@ -1,6 +1,7 @@
 package org.example.web.controllers;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.app.services.BookService;
 import org.example.web.dto.Book;
 import org.jetbrains.annotations.NotNull;
@@ -17,7 +18,7 @@ import java.util.regex.Pattern;
 @Controller
 @RequestMapping(value = "/books")
 public class BookShelfController {
-    private final Logger logger = Logger.getLogger(BookShelfController.class);
+    private final Logger logger = LogManager.getRootLogger();
     private final BookService bookService;
 
     @Autowired
