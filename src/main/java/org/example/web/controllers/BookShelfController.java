@@ -6,6 +6,7 @@ import org.example.app.services.BookService;
 import org.example.web.dto.Book;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping(value = "/books")
+@Scope("singleton")
 public class BookShelfController {
     private final Logger logger = LogManager.getRootLogger();
     private final BookService bookService;
