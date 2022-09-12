@@ -59,10 +59,12 @@ public class BookShelfController {
     public String removeBook(@Valid BookIdToRemove bookIdToRemove, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("book", new Book());
+            model.addAttribute("bookIdToRemove", bookIdToRemove);
             model.addAttribute("bookList", bookService.getAllBooks());
             return "book_shelf";
         }
 
+        bookService.removeBookById(bookIdToRemove.getId());
         return "redirect:/books/shelf";
     }
 
