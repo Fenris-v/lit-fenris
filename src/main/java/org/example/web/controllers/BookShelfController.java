@@ -46,7 +46,6 @@ public class BookShelfController {
 
     @PostMapping("/save")
     public String saveBook(@Valid Book book, @NotNull BindingResult bindingResult, Model model) {
-        logger.info("has errors: " + bindingResult.getAllErrors());
         if (bindingResult.hasErrors()) {
             model.addAttribute("book", book);
             model.addAttribute("bookIdToRemove", new BookIdToRemove());
