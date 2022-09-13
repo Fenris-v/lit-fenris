@@ -24,6 +24,8 @@ public class AppSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(@NotNull HttpSecurity http) throws Exception {
+        http.headers().frameOptions().disable();
+
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/login*").permitAll()

@@ -8,11 +8,11 @@ import javax.validation.constraints.Digits;
 @Getter
 @Setter
 public class Book {
-    private String id;
+    private Integer id;
     private String author;
     private String title;
     @Digits(integer = 4, fraction = 0)
-    private String size;
+    private Integer size;
 
     @Override
     public String toString() {

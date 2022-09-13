@@ -9,5 +9,5 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 public class BookIdToRemove {
     @NotEmpty
-    private String id;
+    private Integer id;
 }
