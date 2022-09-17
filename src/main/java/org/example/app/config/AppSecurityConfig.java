@@ -35,7 +35,7 @@ public class AppSecurityConfig {
                 .loginPage("/login")
                 .loginProcessingUrl("/login/auth")
                 .defaultSuccessUrl("/books/shelf", true)
-                .failureUrl("/login");
+                .failureUrl("/login?error=1");
 
         return http.build();
     }

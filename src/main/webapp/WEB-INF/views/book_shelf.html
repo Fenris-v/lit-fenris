@@ -38,17 +38,19 @@
                     <label>
                         <input type="text" placeholder="author" th:field="*{author}">
                     </label>
+                    <p th:each="err: ${#fields.errors('author')}" th:text="${err}"></p>
                 </td>
                 <td>
                     <label>
                         <input type="text" placeholder="book_title" th:field="*{title}">
                     </label>
+                    <p th:each="err: ${#fields.errors('title')}" th:text="${err}"></p>
                 </td>
                 <td>
                     <label>
                         <input type="number" placeholder="size (pages)" th:field="*{size}">
                     </label>
-                    <p th:if="${#fields.hasErrors()}">field value must be digit and less than 4 signs</p>
+                    <p th:each="err: ${#fields.errors('size')}" th:text="${err}"></p>
                 </td>
                 <td>
                     <input type="submit" value="save">
@@ -68,19 +70,20 @@
                 <td>
                     <input type="submit" value="remove">
                 </td>
-                <td th:if="${#fields.hasErrors()}">
-                    <p>Wrong id or not found</p>
+                <td th:if="${#fields.hasErrors('id')}">
+                    <p th:each="err: ${#fields.errors('id')}" th:text="${err}"></p>
                 </td>
             </tr>
         </table>
     </form>
 
-    <form method="post" th:action="@{/books/removeByRegex}">
+    <form method="post" th:action="@{/books/removeByRegex}" th:object="${regexToRemove}">
         <table>
             <tr>
                 <td>
                     <label>
-                        <input type="text" placeholder="regex" value="^.*(asd).*$" th:name="queryRegex">
+                        <input type="text" placeholder="regex" value="^.*(asd).*$" th:field="*{regex}">
+                        <span th:each="err: ${#fields.errors('regex')}" th:text="${err}"></span>
                     </label>
                 </td>
                 <td>
@@ -90,11 +93,12 @@
         </table>
     </form>
 
-    <form method="post" th:action="@{/books/uploadFile}" enctype="multipart/form-data">
+    <form method="post" th:action="@{/books/uploadFile}" enctype="multipart/form-data" th:object="${uploadFile}">
         <table>
             <tr>
                 <td>
-                    <input type="file" name="file">
+                    <input type="file" th:field="*{file}">
+                    <p th:each="err: ${#fields.errors('file')}" th:text="${err}"></p>
                 </td>
                 <td>
                     <input type="submit" value="Upload">
