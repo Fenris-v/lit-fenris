@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 
 @Service
 public class BookService {
-
     private final ProjectRepository<Book> bookRepo;
 
     @Autowired
@@ -25,8 +24,8 @@ public class BookService {
         bookRepo.store(book);
     }
 
-    public boolean removeBookById(Integer bookIdToRemove) {
-        return bookRepo.removeItemById(bookIdToRemove);
+    public void removeBookById(Integer bookIdToRemove) {
+        bookRepo.removeItemById(bookIdToRemove);
     }
 
     public boolean removeBooksByPattern(Pattern pattern) {
