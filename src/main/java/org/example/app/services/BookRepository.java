@@ -71,7 +71,10 @@ public class BookRepository implements ProjectRepository<Book> {
             isSizeMatch = pattern.matcher(String.valueOf(book.getSize())).find();
 
             if (isAuthorMatch || isTitleMatch || isSizeMatch) {
-//                somethingRemoved = repo.remove(book);
+                MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+                parameterSource.addValue("id", book.getId());
+                jbdcTemplate.update("DELETE FROM books WHERE id = :id", parameterSource);
+                somethingRemoved = true;
             }
         }
 
